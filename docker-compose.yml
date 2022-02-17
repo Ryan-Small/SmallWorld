@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+    minecraft-server:
+        image: itzg/minecraft-server
+        volumes:
+            - server-data:/data
+            - ./mods:/mods
+        ports:
+            - 25565:25565
+        environment:
+            EULA: "TRUE"
+            TYPE: "FORGE"
+            MEMORY: 2G
+            OVERRIDE_SERVER_PROPERTIES: "true"
+            SERVER_NAME: $SERVER_NAME
+            MOTD: $MOTD
+            SEED: $SEED
+            OPS: $OPS
+        tty: true
+        stdin_open: true
+
+volumes:
+    server-data:
+
